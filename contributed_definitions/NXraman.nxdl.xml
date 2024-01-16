@@ -23,7 +23,13 @@
             <field name="energy_resolution" type="NX_FLOAT"/>
             -->
             <!-- https://github.com/h2020charisma/ramanchada2/discussions/90 
-                Device type: FT-IR, dispersive, scanning -->
+                Device type: FT-IR, dispersive, scanning 
+            
+                source -laser, optiocal path , spectrometer
+                exitation and collection path
+
+            -->
+            <group type="NXmanufacturer"/>
             <group type="NXsource">
                 <doc>
                      The source used to generate the primary photons. Properties refer strictly to
@@ -32,8 +38,11 @@
                      in a synchrotron and so on.
                 </doc>
                 <field name="type" type="NX_CHAR">
+                    <!-- only laser and UV and then type of the laser -->
                     <enumeration>
                         <item value="Optical Laser"/>
+                        <item value="UV Laser"/>
+                        <item value="LED"/>
                         <!--
                         <item value="Synchrotron X-ray Source"/>
                         <item value="Rotating Anode X-ray"/>
@@ -56,6 +65,7 @@
                     <doc>Laser power</doc>
                 </field>                
                 <field name="name" type="NX_CHAR"/>
+                <!--
                 <field name="probe" type="NX_CHAR">
                     <doc>
                          Type of probe. In photoemission it's always photons, so the full NIAC list is
@@ -67,7 +77,24 @@
                         <item value="visible light"/>
                     </enumeration>
                 </field>
+                -->
+                <!--
+                    in the spectrometer group
+                    	<field name="line_density" type="NX_FLOAT" units="? lines/mm">
+		            <doc></doc>
+	                </field>
+                NXgrating 
+                -->
+                <!-- 
+                    optical path 
+                    depends on instrument
+                    just a probe
+                    for optical  paths - magnification, polarization, slit, objective etc
+                    magnification & objective should be fixed, they are used for calculation 
+                   + Nxnote should do for the rest
+                -->
             </group>
+            <!--
             <group type="NXbeam">
                 <field name="distance" type="NX_NUMBER">
                     <doc>
@@ -188,6 +215,8 @@
                     <field name="sample_bias" recommended="true" type="NX_FLOAT"/>
                 </group>
             </group>
+
+        -->
         </group>
         <group type="NXprocess">
             <doc>
@@ -195,6 +224,10 @@
                  Describe the appropriate axis calibrations for your experiment using one or more
                  of the following NXcalibrations
             </doc>
+            <!-- 
+                    add steps with parameters , e.g. baseline , peak fitting
+
+            -->
             <group name="x_calibration" optional="true" type="NXcalibration">
                 <field name="applied" type="NX_BOOLEAN">
                     <doc>
