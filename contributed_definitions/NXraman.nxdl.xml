@@ -19,7 +19,10 @@
             </enumeration>
         </field>
         <group type="NXinstrument">
+            <!--
             <field name="energy_resolution" type="NX_FLOAT"/>
+            -->
+            <field name="wavelength" type="NX_FLOAT" units="NX_WAVELENGTH" minOccurs="1" maxOccurs="1"/>            
             <group type="NXsource">
                 <doc>
                      The source used to generate the primary photons. Properties refer strictly to
