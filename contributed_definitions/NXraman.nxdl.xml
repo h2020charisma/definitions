@@ -195,6 +195,58 @@
                  Describe the appropriate axis calibrations for your experiment using one or more
                  of the following NXcalibrations
             </doc>
+            <group name="x_calibration" optional="true" type="NXcalibration">
+                <field name="applied" type="NX_BOOLEAN">
+                    <doc>
+                         Has an x calibration been applied?
+                    </doc>
+                </field>
+                <field name="calibrated_axis_x" recommended="true" type="NX_FLOAT">
+                    <doc>
+                         This is the calibrated x axis to be used for data plotting.
+                    </doc>
+                </field>
+            </group>     
+            <group name="y_calibration" optional="true" type="NXcalibration">
+                <field name="applied" type="NX_BOOLEAN">
+                    <doc>
+                         Has an y calibration been applied?
+                    </doc>
+                </field>
+                <field name="calibrated_axis_y" recommended="true" type="NX_FLOAT">
+                    <doc>
+                         This is the calibrated y axis to be used for data plotting.
+                    </doc>
+                </field>
+            </group>
+            <group name="twinning" optional="true" type="NXcalibration">
+                <field name="applied" type="NX_BOOLEAN">
+                    <doc>
+                         Has  twinning been applied?
+                    </doc>
+                </field>
+                <field name="twinning_axis_a" recommended="true" type="NX_FLOAT">
+                    <doc>
+                         This is the calibrated x axis to be used for data plotting.
+                    </doc>
+                </field>                
+                <field name="twinning_axis_y" recommended="true" type="NX_FLOAT">
+                    <doc>
+                         This is the calibrated y axis to be used for data plotting.
+                    </doc>
+                </field>
+            </group>    
+            <group type="NXprocess" optional="true">
+                <doc>
+                     Description of a processing or analysis step, such as the 
+                     baseline extraction or normalization integration.
+                     Add additional fields as needed to describe value(s) of 
+                     any variable, parameter, or term related to 
+                     the NXprocess step. Be sure to include units attributes 
+                     for all numerical fields.
+                </doc>
+            </group>                                           
+            <!--
             <group name="energy_calibration" optional="true" type="NXcalibration">
                 <field name="applied" type="NX_BOOLEAN">
                     <doc>
@@ -243,6 +295,7 @@
                     </doc>
                 </field>
             </group>
+            -->
         </group>
         <group type="NXsample">
             <field name="name" type="NX_CHAR"/>
@@ -252,6 +305,7 @@
                      group in NXsample instead.
                 </doc>
             </field>
+            <!--
             <group name="sample_history" recommended="true" type="NXnote">
                 <doc>
                      A descriptor to keep track of the treatment of the sample before entering the
@@ -261,6 +315,7 @@
                      case these are not available, free-text description.
                 </doc>
             </group>
+            -->
             <field name="preparation_date" recommended="true" type="NX_DATE_TIME">
                 <doc>
                      Date of preparation of the sample for the XPS experiment (i.e.
@@ -284,7 +339,12 @@
                      /entry/instrument/manipulator/sample_temperature.
                 </doc>
             </field>
+            <!--
             <field name="situation" type="NX_CHAR">
+                <doc>
+                    Description of the environment the sample is in: 
+                    air, vacuum, oxidizing atmosphere, dehydrated, etc.
+                </doc>
                 <enumeration>
                     <item value="vacuum"/>
                     <item value="inert atmosphere"/>
@@ -293,6 +353,18 @@
                 </enumeration>
             </field>
             <field name="gas_pressure" type="NX_FLOAT"/>
+        -->
+            <field name="type" type="NX_CHAR">
+                <enumeration>
+                <item value="sample"/>
+                <item value="sample+can"/>
+                <item value="calibration sample"/>
+                <item value="normalisation sample"/>
+                <item value="simulated data"/>
+                <item value="none"/>
+                <item value="sample_environment"/>
+                </enumeration>
+            </field>
         </group>
         <group type="NXdata">
             <attribute name="signal">
