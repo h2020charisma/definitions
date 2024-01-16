@@ -22,7 +22,8 @@
             <!--
             <field name="energy_resolution" type="NX_FLOAT"/>
             -->
-            <field name="wavelength" type="NX_FLOAT" units="NX_WAVELENGTH" minOccurs="1" maxOccurs="1"/>            
+            <!-- https://github.com/h2020charisma/ramanchada2/discussions/90 
+                Device type: FT-IR, dispersive, scanning -->
             <group type="NXsource">
                 <doc>
                      The source used to generate the primary photons. Properties refer strictly to
@@ -32,17 +33,28 @@
                 </doc>
                 <field name="type" type="NX_CHAR">
                     <enumeration>
+                        <item value="Optical Laser"/>
+                        <!--
                         <item value="Synchrotron X-ray Source"/>
                         <item value="Rotating Anode X-ray"/>
                         <item value="Fixed Tube X-ray"/>
                         <item value="UV Laser"/>
                         <item value="Free-Electron Laser"/>
-                        <item value="Optical Laser"/>
                         <item value="UV Plasma Source"/>
                         <item value="Metal Jet X-ray"/>
                         <item value="HHG laser"/>
+                        -->
                     </enumeration>
                 </field>
+                <!--
+                    https://github.com/h2020charisma/ramanchada2/discussions/90 
+                    Laser wavelength (nm)
+                    Laser power (mW) or laser power (%) and actual maximum
+                    Optical path -->
+                <field name="wavelength" type="NX_FLOAT" units="NX_WAVELENGTH" minOccurs="1" maxOccurs="1"/>    
+                <field name="power" type="NX_FLOAT" units="NX_POWER">
+                    <doc>Laser power</doc>
+                </field>                
                 <field name="name" type="NX_CHAR"/>
                 <field name="probe" type="NX_CHAR">
                     <doc>
